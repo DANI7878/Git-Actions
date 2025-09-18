@@ -1,3 +1,10 @@
+
+name: CI Demo-Test
+on:
+  push:
+    branches: ["main"]
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
