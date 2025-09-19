@@ -1,4 +1,4 @@
-name: Commit mesage workflow -daniel
+name: Commit mesage workflow -daniell
 on:
   push:
     branches: ["main"]
