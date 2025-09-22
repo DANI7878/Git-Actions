@@ -1,8 +1,6 @@
 name: Example Workflow using Environment Variables
 on:
-  push:
-    branches: ["main"]
-
+  workflow_dispatch:
 
 env:
  DAY_OF_WEEK: Monday
@@ -14,6 +12,6 @@ jobs:
     
     steps:
       - name: Environment Declaration
-        run: echo "$Greeting $FirstName . Today is $DAY_OF_WEEK "
+        run: echo "$Greeting $First_Name . Today is $DAY_OF_WEEK "
         env:
          First_Name: Daniel 
