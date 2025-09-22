@@ -1,16 +1,19 @@
-name: Commit mesage workflow -daniell
+name: Example Workflow using Environment Variables
 on:
   push:
     branches: ["main"]
 
+
+env:
+ DAY_OF_WEEK: Monday
 jobs:
-  deploy-daniel:
-    if: contains(github.event.head_commit.message, '[deploy]')
-    
+  demo:
     runs-on: ubuntu-latest
+    env:
+      Greeting: Hello
+    
     steps:
-      - name: Checkout code
-      - uses: actions/checkout@v3
-      - name: Run this script
-        run: echo "deploy this application"
-     
+      - name: Environment Declaration
+        run: echo "$Greeting $FirstName . Today is $DAY_OF_WEEK "
+        env:
+         First_Name: Daniel 
