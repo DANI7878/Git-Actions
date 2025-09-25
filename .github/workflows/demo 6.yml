@@ -1,0 +1,34 @@
+name: Python Matrix Test
+
+on:
+ workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10, 3.11]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # - name: Set up Python ${{ matrix.python-version }}
+    #   uses: actions/setup-python@v5
+      with:
+        repository: CosmosGenAI/promptGPT
+
+    - name: Install dependencies
+      run: |
+        sudo apt update && sudo apt upgrade -y
+        sudo apt install python ${{matrix.python-version}}
+        pip3  install  dataset
+        pip3 install pandas
+        
+ 
+
+    - name: Run application
+      run: |
+        python ./main.py
+ 
