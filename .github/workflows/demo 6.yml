@@ -15,13 +15,13 @@ jobs:
       run: echo "Secret is hidden"
 
       env:
-        SECRET_VALUE: ${{secrets.MY_SECRETS}}
+        SECRET_VALUE: ${{secrets.MY_SECRET}}
     - name: Secret in the script
       run:  |
         echo "This is my secret"
         echo "Length of the secret: ${#SECRET_VALUE}"
       env:
-       SECRET_VALUE: ${{secrets.MY_SECRETS}}
+       SECRET_VALUE: ${{secrets.MY_SECRET}}
        
        
  
