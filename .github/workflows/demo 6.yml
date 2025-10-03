@@ -1,34 +1,27 @@
-name: Python Matrix Test
+name: SecretDemo
 
 on:
- workflow_dispatch:
-
+ push:
+  branches:
+    - main
 jobs:
-  test:
+  show-secret:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.8, 3.9, 3.10, 3.11]
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # - name: Set up Python ${{ matrix.python-version }}
-    #   uses: actions/setup-python@v5
-      with:
-        repository: CosmosGenAI/promptGPT
+    - name: Print Secret 
+      run: echo "Secret is hidden"
 
-    - name: Install dependencies
-      run: |
-        sudo apt update && sudo apt upgrade -y
-        sudo apt install python ${{matrix.python-version}}
-        pip3  install  dataset
-        pip3 install pandas
-        
- 
-
-    - name: Run application
-      run: |
-        python ./main.py
+      env:
+        SECRET_VALUE: ${{secrets.MY_SECRETS}}
+    - name: Secret in the script
+      run:  |
+        echo "This is my secret"
+        echo "Length of the secret: ${#SECRET_VALUE}"
+      env:
+       SECRET_VALUE: ${{secrets.MY_SECRETS}}
+       
+       
  
